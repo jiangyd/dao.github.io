@@ -6,6 +6,7 @@
     <content type="text"><![CDATA[docker cp 使用记录把容器里面的文件，目录拷贝到宿主机 1$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/testing.www.cloudcare.cn.conf nginx_conf/ 1$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/ nginx_conf/]]></content>
       <tags>
         <tag>docker</tag>
+        <tag>cp</tag>
       </tags>
   </entry>
   <entry>
