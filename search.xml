@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>docker cp</title>
+      <link href="/2018/05/06/docker-cp/"/>
+      <url>/2018/05/06/docker-cp/</url>
+      <content type="html"><![CDATA[<h3 id="docker-cp-使用记录"><a href="#docker-cp-使用记录" class="headerlink" title="docker cp 使用记录"></a>docker cp 使用记录</h3><p>把容器里面的文件，目录拷贝到宿主机</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/testing.www.cloudcare.cn.conf nginx_conf/</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/ nginx_conf/</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>docker logs</title>
       <link href="/2018/05/06/docker-logs/"/>
       <url>/2018/05/06/docker-logs/</url>
