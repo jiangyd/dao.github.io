@@ -4,6 +4,9 @@
     <title><![CDATA[docker cp]]></title>
     <url>%2F2018%2F05%2F06%2Fdocker-cp%2F</url>
     <content type="text"><![CDATA[docker cp 使用记录把容器里面的文件，目录拷贝到宿主机 1$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/testing.www.cloudcare.cn.conf nginx_conf/ 1$docker cp 2f4f188c5d1c:/etc/nginx/conf.d/ nginx_conf/]]></content>
+      <categories>
+        <category>docker常用命令</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>cp</tag>
@@ -13,6 +16,9 @@
     <title><![CDATA[docker logs]]></title>
     <url>%2F2018%2F05%2F06%2Fdocker-logs%2F</url>
     <content type="text"><![CDATA[docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage: docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions: --details Show extra details provided to logs -f, --follow Follow log output --help Print usage --since string Show logs since timestamp --tail string Number of lines to show from the end of the logs (default &quot;all&quot;) -t, --timestamps Show timestamps 实时查看日志1$ docker logs -f a13d7f1818d6 查看日志产生的时间 12$ docker logs -t a13d7f1818d62018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started. 查看最后多少条日志 1docker logs -f --tail=10 a13d7f1818d6]]></content>
+      <categories>
+        <category>docker常用命令</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
