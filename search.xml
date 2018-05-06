@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[docker logs]]></title>
+    <url>%2F2018%2F05%2F06%2Fdocker-logs%2F</url>
+    <content type="text"><![CDATA[docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage: docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions: --details Show extra details provided to logs -f, --follow Follow log output --help Print usage --since string Show logs since timestamp --tail string Number of lines to show from the end of the logs (default &quot;all&quot;) -t, --timestamps Show timestamps 显示所有日志1$ docker logs -f --tail all a13d7f1818d6 显示的日志加上时间 12$ docker logs -t a13d7f1818d62018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started.]]></content>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F05%2F06%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
