@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="睡着了去做梦">
 <meta property="og:description" content="docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage:	docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions:      --details        Show extra details provided to logs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T09:21:12.000Z">
+<meta property="og:updated_time" content="2018-05-06T09:40:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker logs">
 <meta name="twitter:description" content="docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage:	docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions:      --details        Show extra details provided to logs">
@@ -366,9 +366,11 @@
       
         <h3 id="docker-logs-使用记录"><a href="#docker-logs-使用记录" class="headerlink" title="docker logs 使用记录"></a>docker logs 使用记录</h3><p>最近常用到容器的这个命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs --help</span><br><span class="line"></span><br><span class="line">Usage:	docker logs [OPTIONS] CONTAINER</span><br><span class="line"></span><br><span class="line">Fetch the logs of a container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --details        Show extra details provided to logs</span><br><span class="line">  -f, --follow         Follow log output</span><br><span class="line">      --help           Print usage</span><br><span class="line">      --since string   Show logs since timestamp</span><br><span class="line">      --tail string    Number of lines to show from the end of the logs (default &quot;all&quot;)</span><br><span class="line">  -t, --timestamps     Show timestamps</span><br></pre></td></tr></table></figure>
-<p>显示所有日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -f --tail  all a13d7f1818d6</span><br></pre></td></tr></table></figure></p>
-<p>显示的日志加上时间</p>
+<p>实时查看日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -f a13d7f1818d6</span><br></pre></td></tr></table></figure></p>
+<p>查看日志产生的时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -t  a13d7f1818d6</span><br><span class="line">2018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started.</span><br></pre></td></tr></table></figure>
+<p>查看最后多少条日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f --tail=10 a13d7f1818d6</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -395,22 +397,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/05/06/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -488,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
