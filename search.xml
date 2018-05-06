@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[docker logs]]></title>
-    <url>%2F2018%2F05%2F06%2Fdocker-logs%2F</url>
-    <content type="text"><![CDATA[docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage: docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions: --details Show extra details provided to logs -f, --follow Follow log output --help Print usage --since string Show logs since timestamp --tail string Number of lines to show from the end of the logs (default &quot;all&quot;) -t, --timestamps Show timestamps 实时查看日志1$ docker logs -f a13d7f1818d6 查看日志产生的时间 12$ docker logs -t a13d7f1818d62018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started. 查看最后多少条日志 1docker logs -f --tail=10 a13d7f1818d6]]></content>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title>docker logs</title>
+      <link href="/2018/05/06/docker-logs/"/>
+      <url>/2018/05/06/docker-logs/</url>
+      <content type="html"><![CDATA[<h3 id="docker-logs-使用记录"><a href="#docker-logs-使用记录" class="headerlink" title="docker logs 使用记录"></a>docker logs 使用记录</h3><p>最近常用到容器的这个命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs --help</span><br><span class="line"></span><br><span class="line">Usage:docker logs [OPTIONS] CONTAINER</span><br><span class="line"></span><br><span class="line">Fetch the logs of a container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --details        Show extra details provided to logs</span><br><span class="line">  -f, --follow         Follow log output</span><br><span class="line">      --help           Print usage</span><br><span class="line">      --since string   Show logs since timestamp</span><br><span class="line">      --tail string    Number of lines to show from the end of the logs (default &quot;all&quot;)</span><br><span class="line">  -t, --timestamps     Show timestamps</span><br></pre></td></tr></table></figure><p>实时查看日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -f a13d7f1818d6</span><br></pre></td></tr></table></figure></p><p>查看日志产生的时间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -t  a13d7f1818d6</span><br><span class="line">2018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started.</span><br></pre></td></tr></table></figure><p>查看最后多少条日志</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f --tail=10 a13d7f1818d6</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+  
+  
 </search>
