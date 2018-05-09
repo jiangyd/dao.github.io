@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[容器与宿主机时区不一致问题]]></title>
+    <url>%2F2018%2F05%2F09%2F%E5%AE%B9%E5%99%A8%E4%B8%8E%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%97%B6%E5%8C%BA%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[docker 容器时区与宿主机时区保持一致 共享宿主机的local time 1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash 在dockerfile中定义 1234567RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \或者RUN /bin/cp /etc/localtime /etc/localtime \ &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \]]></content>
+      <tags>
+        <tag>－ docker - 挂载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ubuntu apt使用阿里源]]></title>
     <url>%2F2018%2F05%2F09%2Fubuntu-apt%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E6%BA%90%2F</url>
     <content type="text"><![CDATA[ubuntu 14.04使用阿里的软件源 备份 1# cp /etc/apt/sources.list /etc/apt/sources.list.bak 替换 12345678910111213141516cat &gt;/etc/apt/sources.list&lt;&lt;EOFdeb https://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb-src https://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb https://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiversedeb-src https://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiversedeb https://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiversedeb-src https://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiversedeb https://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiversedeb-src https://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse## Not recommended# deb https://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse# deb-src https://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverseEOF 最后执行apt更新 1# apt-get update 其它系统参考此地址 https://opsx.alibaba.com/mirror]]></content>
