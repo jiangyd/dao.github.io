@@ -365,11 +365,11 @@
         
           
             <h4 id="docker-容器时区与宿主机时区保持一致"><a href="#docker-容器时区与宿主机时区保持一致" class="headerlink" title="docker 容器时区与宿主机时区保持一致"></a>docker 容器时区与宿主机时区保持一致</h4><blockquote>
-<p>共享宿主机的local time</p>
+<p>方法1 共享宿主机的local time</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>在dockerfile中定义</p>
+<p>方法2 在dockerfile中定义</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">  &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">RUN /bin/cp /etc/localtime /etc/localtime \</span><br><span class="line">  &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \</span><br></pre></td></tr></table></figure>
 

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="docker 容器时区与宿主机时区保持一致 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  在dockerfile中定义  1234567RUN /bin/cp /usr/share/zoneinfo/A">
+<meta name="description" content="docker 容器时区与宿主机时区保持一致 方法1 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  方法2 在dockerfile中定义  1234567RUN /bin/cp /usr/share/zo">
 <meta name="keywords" content="－ docker - 挂载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="容器与宿主机时区不一致问题">
 <meta property="og:url" content="http://yoursite.com/2018/05/09/容器与宿主机时区不一致问题/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
-<meta property="og:description" content="docker 容器时区与宿主机时区保持一致 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  在dockerfile中定义  1234567RUN /bin/cp /usr/share/zoneinfo/A">
+<meta property="og:description" content="docker 容器时区与宿主机时区保持一致 方法1 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  方法2 在dockerfile中定义  1234567RUN /bin/cp /usr/share/zo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-09T10:51:34.000Z">
+<meta property="og:updated_time" content="2018-05-10T01:26:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="容器与宿主机时区不一致问题">
-<meta name="twitter:description" content="docker 容器时区与宿主机时区保持一致 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  在dockerfile中定义  1234567RUN /bin/cp /usr/share/zoneinfo/A">
+<meta name="twitter:description" content="docker 容器时区与宿主机时区保持一致 方法1 共享宿主机的local time  1docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash  方法2 在dockerfile中定义  1234567RUN /bin/cp /usr/share/zo">
 
 
 
@@ -365,11 +365,11 @@
 
       
         <h4 id="docker-容器时区与宿主机时区保持一致"><a href="#docker-容器时区与宿主机时区保持一致" class="headerlink" title="docker 容器时区与宿主机时区保持一致"></a>docker 容器时区与宿主机时区保持一致</h4><blockquote>
-<p>共享宿主机的local time</p>
+<p>方法1 共享宿主机的local time</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone ubuntu:16.04 /bin/bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>在dockerfile中定义</p>
+<p>方法2 在dockerfile中定义</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">  &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">RUN /bin/cp /etc/localtime /etc/localtime \</span><br><span class="line">  &amp;&amp; echo &apos;Asia/Shanghai&apos; &gt;/etc/timezone \</span><br></pre></td></tr></table></figure>
 
