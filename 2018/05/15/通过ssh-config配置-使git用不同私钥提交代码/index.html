@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="ssh,git," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage:	docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions:      --details        Show extra details provided to logs">
-<meta name="keywords" content="docker">
+<meta name="description" content="我有在用hexo部署blog在github上，本地构建完成后，直接可以把编译后的文件部署上去 但是，我希望源文件也可以存放在github上，所以我又搞了一个仓库地址 但是在当前目录提交代码时，只能提交一个，另一个提交不了，因为默认使用的私钥文件不对 为了区分开来，我只能配置不同的私钥文件,可以参考下我的配置文件 123456789101112131415$ touch ~/.ssh/config$">
+<meta name="keywords" content="ssh,git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker logs">
-<meta property="og:url" content="http://yoursite.com/2018/05/06/docker-logs/index.html">
+<meta property="og:title" content="通过ssh config配置, 使git用不同私钥提交代码">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/通过ssh-config配置-使git用不同私钥提交代码/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
-<meta property="og:description" content="docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage:	docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions:      --details        Show extra details provided to logs">
+<meta property="og:description" content="我有在用hexo部署blog在github上，本地构建完成后，直接可以把编译后的文件部署上去 但是，我希望源文件也可以存放在github上，所以我又搞了一个仓库地址 但是在当前目录提交代码时，只能提交一个，另一个提交不了，因为默认使用的私钥文件不对 为了区分开来，我只能配置不同的私钥文件,可以参考下我的配置文件 123456789101112131415$ touch ~/.ssh/config$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T11:43:35.000Z">
+<meta property="og:updated_time" content="2018-05-15T08:04:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker logs">
-<meta name="twitter:description" content="docker logs 使用记录最近常用到容器的这个命令 12345678910111213$ docker logs --helpUsage:	docker logs [OPTIONS] CONTAINERFetch the logs of a containerOptions:      --details        Show extra details provided to logs">
+<meta name="twitter:title" content="通过ssh config配置, 使git用不同私钥提交代码">
+<meta name="twitter:description" content="我有在用hexo部署blog在github上，本地构建完成后，直接可以把编译后的文件部署上去 但是，我希望源文件也可以存放在github上，所以我又搞了一个仓库地址 但是在当前目录提交代码时，只能提交一个，另一个提交不了，因为默认使用的私钥文件不对 为了区分开来，我只能配置不同的私钥文件,可以参考下我的配置文件 123456789101112131415$ touch ~/.ssh/config$">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/06/docker-logs/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/15/通过ssh-config配置-使git用不同私钥提交代码/"/>
 
 
 
 
 
-  <title>docker logs | 睡着了去做梦</title>
+  <title>通过ssh config配置, 使git用不同私钥提交代码 | 睡着了去做梦</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/docker-logs/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/通过ssh-config配置-使git用不同私钥提交代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江永道">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker logs</h1>
+          <h1 class="post-title" itemprop="name headline">通过ssh config配置, 使git用不同私钥提交代码</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T17:13:59+08:00">
-                2018-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T15:54:06+08:00">
+                2018-05-15
               </time>
             
 
@@ -336,28 +336,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker常用命令/" itemprop="url" rel="index">
-                    <span itemprop="name">docker常用命令</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -386,13 +364,25 @@
       
 
       
-        <h3 id="docker-logs-使用记录"><a href="#docker-logs-使用记录" class="headerlink" title="docker logs 使用记录"></a>docker logs 使用记录</h3><p>最近常用到容器的这个命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs --help</span><br><span class="line"></span><br><span class="line">Usage:	docker logs [OPTIONS] CONTAINER</span><br><span class="line"></span><br><span class="line">Fetch the logs of a container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --details        Show extra details provided to logs</span><br><span class="line">  -f, --follow         Follow log output</span><br><span class="line">      --help           Print usage</span><br><span class="line">      --since string   Show logs since timestamp</span><br><span class="line">      --tail string    Number of lines to show from the end of the logs (default &quot;all&quot;)</span><br><span class="line">  -t, --timestamps     Show timestamps</span><br></pre></td></tr></table></figure>
-<p>实时查看日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -f a13d7f1818d6</span><br></pre></td></tr></table></figure></p>
-<p>查看日志产生的时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs -t  a13d7f1818d6</span><br><span class="line">2018-05-06T08:53:26.689471000Z INFO:callme.server:Server with id=&apos;cloudcare&apos; started.</span><br></pre></td></tr></table></figure>
-<p>查看最后多少条日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f --tail=10 a13d7f1818d6</span><br></pre></td></tr></table></figure>
+        <p>我有在用hexo部署blog在github上，本地构建完成后，直接可以把编译后的文件部署上去</p>
+<p>但是，我希望源文件也可以存放在github上，所以我又搞了一个仓库地址</p>
+<p>但是在当前目录提交代码时，只能提交一个，另一个提交不了，因为默认使用的私钥文件不对</p>
+<p>为了区分开来，我只能配置不同的私钥文件,可以参考下我的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ touch ~/.ssh/config</span><br><span class="line">$ vim ~/.ssh/config</span><br><span class="line"></span><br><span class="line">HOST server1</span><br><span class="line"> HOSTNAME 192.168.56.102</span><br><span class="line"> User jyd</span><br><span class="line"> Port 3333</span><br><span class="line"></span><br><span class="line">HOST gitblog.com</span><br><span class="line">  HOSTNAME github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line">HOST github.com</span><br><span class="line">  HOSTNAME github.com</span><br><span class="line">  IdentityFile ~/.ssh/github.com</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>HOST 别名<br>HOSTNAME  主机<br>User 用户名<br>Port 端口<br>IdentityFile 私钥文件   </p>
 
       
     </div>
@@ -410,7 +400,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -423,15 +415,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/09/容器与宿主机时区不一致问题/" rel="next" title="容器与宿主机时区不一致问题">
+                <i class="fa fa-chevron-left"></i> 容器与宿主机时区不一致问题
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/06/docker-cp/" rel="prev" title="docker cp">
-                docker cp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,17 +475,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,22 +540,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-logs-使用记录"><span class="nav-number">1.</span> <span class="nav-text">docker logs 使用记录</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
