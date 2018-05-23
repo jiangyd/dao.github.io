@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[设置mysql最大连接数]]></title>
+    <url>%2F2018%2F05%2F21%2F%E8%AE%BE%E7%BD%AEmysql%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[为什么要修改连接数，是因为默认的连接不满足需求，在硬件条件允许下，修改最大连接数达到满足需求的目的 查看当前mysql最大连接数 1234567mysql&gt; show variables like &apos;max_connections&apos;;+-----------------+-------+| Variable_name | Value |+-----------------+-------+| max_connections | 1000 |+-----------------+-------+1 row in set (0.31 sec) 修改当前mysql最大连接数 1mysql&gt; set global max_connections=1000; 但是以上的修改方式，在mysql服务重启后会失效]]></content>
+      <tags>
+        <tag>－ mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[时间不对，通过ntpdate同步时间]]></title>
     <url>%2F2018%2F05%2F21%2F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%AF%B9%EF%BC%8C%E9%80%9A%E8%BF%87ntpdate%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4%2F</url>
-    <content type="text"><![CDATA[我有一台虚拟机，时间不对，影响我使用,使用阿里云公网NTP服务同步时间 12# ntpdate ntp1.aliyun.com21 May 12:50:42 ntpdate[6794]: step time server 182.92.12.11 offset 0.548418 sec 其它阿里云公网NTP时间服务 公网NTP—|ntp2.aliyun.comntp3.aliyun.comntp4.aliyun.comntp5.aliyun.comntp6.aliyun.comntp7.aliyun.com]]></content>
+    <content type="text"><![CDATA[我有一台虚拟机，时间不对，影响我使用,使用阿里云公网NTP服务同步时间 12# ntpdate ntp1.aliyun.com21 May 12:50:42 ntpdate[6794]: step time server 182.92.12.11 offset 0.548418 sec 其它阿里云公网NTP时间服务器 公网NTP ntp2.aliyun.comntp3.aliyun.comntp4.aliyun.comntp5.aliyun.comntp6.aliyun.comntp7.aliyun.com]]></content>
       <tags>
         <tag>时间同步</tag>
         <tag>ntpdate</tag>
