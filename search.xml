@@ -18,7 +18,7 @@
     </entry>
     
     <entry>
-      <title>记一次selenium 一打开浏览器就自动关闭了的问题( Only local connections are allowed.)</title>
+      <title>记一次selenium 一打开浏览器就自动关闭了的问题</title>
       <link href="/2018/05/23/%E8%AE%B0%E4%B8%80%E6%AC%A1selenium-%E4%B8%80%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B0%B1%E8%87%AA%E5%8A%A8%E5%85%B3%E9%97%AD%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98-Only-local-connections-are-allowed/"/>
       <url>/2018/05/23/%E8%AE%B0%E4%B8%80%E6%AC%A1selenium-%E4%B8%80%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B0%B1%E8%87%AA%E5%8A%A8%E5%85%B3%E9%97%AD%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98-Only-local-connections-are-allowed/</url>
       <content type="html"><![CDATA[<p>selenium无法打开浏览器运行</p><p>1.chromedriver 版本与浏览器不匹配<br>2.如果是在本地调用， localhost需要指向127.0.0.1这个IP，不然也跑不起来(其实只是要host能指向正确的selenium driver的地址就行)</p><p><a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/chromedriver</a></p><p><a href="https://npm.taobao.org/mirrors/selenium" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/selenium</a></p>]]></content>
@@ -92,7 +92,9 @@
       
         <tags>
             
-            <tag> － docker - 挂载 </tag>
+            <tag> docker </tag>
+            
+            <tag> 挂载 </tag>
             
         </tags>
       
