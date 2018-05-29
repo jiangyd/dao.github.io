@@ -394,6 +394,31 @@
 <p>去qq邮箱看看</p>
 </blockquote>
 <img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq.png" title="验证">
+<blockquote>
+<p>试试其它机器，连接邮件服务器来发邮件，并用python实现</p>
+</blockquote>
+<p>其它机器要能访问test.cn这个地址，可以本地绑定host</p>
+<blockquote>
+<p>python脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># coding=utf-8</span><br><span class="line">__author__ = &apos;jyd&apos;</span><br><span class="line"></span><br><span class="line">import smtplib</span><br><span class="line"></span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line"></span><br><span class="line">smtpserver = &quot;test.cn&quot;</span><br><span class="line">username = &quot;jiangyd@test.cn&quot;</span><br><span class="line"></span><br><span class="line">msg = MIMEText(&quot;你好，这是一封测试邮件&quot;)</span><br><span class="line">msg[&apos;subject&apos;] = &quot;测试邮件&quot;</span><br><span class="line">msg[&apos;From&apos;] = &quot;jiangyd@test.cn&quot;</span><br><span class="line">msg[&apos;To&apos;] = &quot;962584902@qq.com&quot;</span><br><span class="line"></span><br><span class="line">smtp = smtplib.SMTP()</span><br><span class="line">smtp.connect(smtpserver)</span><br><span class="line">smtp.sendmail(msg[&apos;From&apos;], msg[&apos;To&apos;], msg.as_string())</span><br><span class="line">smtp.quit()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行以上脚本报错了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    raise SMTPRecipientsRefused(senderrs)</span><br><span class="line">smtplib.SMTPRecipientsRefused: &#123;&apos;962584902@qq.com&apos;: (454, b&apos;4.7.1 &lt;962584902@qq.com&gt;: Relay access denied&apos;)&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>看看日志，发现是访问被拒绝了,不允许这个192.168.56.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tailf /var/log/mail.log</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: connect from unknown[192.168.56.1]</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: NOQUEUE: reject: RCPT from unknown[192.168.56.1]: 454 4.7.1 &lt;962584902@qq.com&gt;: Relay access denied; from=&lt;jiangyd@test.cn&gt; to=&lt;962584902@qq.com&gt; proto=ESMTP helo=&lt;jiangyd.local&gt;</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: lost connection after RSET from unknown[192.168.56.1]</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: disconnect from unknown[192.168.56.1]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>更改设置 增加可信客户端网段192.168.56.0/24,也可是增加万能的0.0.0.0/0</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/postfix/main.cf</span><br><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.56.0/24</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更改后需要重启<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /etc/init.d/postfix restart</span><br><span class="line">sudo: unable to resolve host test.cn</span><br><span class="line"> * Stopping Postfix Mail Transport Agent postfix                                     [ OK ]</span><br><span class="line"> * Starting Postfix Mail Transport Agent postfix                                     [ OK ]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>再次验证<br><img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq_python.png" title="设置mail name"></p>
+</blockquote>
 
           
         
