@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>搭建postfix邮件服务器</title>
+      <link href="/2018/05/29/%E6%90%AD%E5%BB%BApostfix%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>/2018/05/29/%E6%90%AD%E5%BB%BApostfix%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      <content type="html"><![CDATA[<blockquote><p>设置主机名为test.cn</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/hostname</span><br></pre></td></tr></table></figure><blockquote><p>查看主机名设置是否生效</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hostname</span><br><span class="line">test.cn</span><br></pre></td></tr></table></figure><blockquote><p>更新及安装</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install postfix</span><br></pre></td></tr></table></figure><img src="/2018/05/29/搭建postfix邮件服务器/mail_configuration.png" title="选择Internet Site"><img src="/2018/05/29/搭建postfix邮件服务器/mail_name.png" title="设置mail name"><blockquote><p>安装完成后监听端口</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -lntp|grep 25</span><br><span class="line">(No info could be read for &quot;-p&quot;: geteuid()=1000 but you should be root.)</span><br><span class="line">tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      -</span><br><span class="line">tcp6       0      0 :::25                   :::*                    LISTEN      -</span><br></pre></td></tr></table></figure><blockquote><p>安装mail测试下</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mailutils</span><br><span class="line">$ echo &quot;this is a test email&quot; |mail &quot;962584902@qq.com&quot;</span><br></pre></td></tr></table></figure><blockquote><p>看看日志是否正常</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tailf /var/log/mail.log</span><br><span class="line">May 29 14:14:32 test postfix/pickup[2416]: E275A601B5: uid=1000 from=&lt;jiangyd@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/cleanup[2938]: E275A601B5: message-id=&lt;20180529061432.E275A601B5@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/qmgr[2417]: E275A601B5: from=&lt;jiangyd@test.cn&gt;, size=320, nrcpt=1 (queue active)</span><br><span class="line">May 29 14:14:33 test postfix/smtp[2940]: connect to mx3.qq.com[240e:ff:f040:28::f]:25: Network is unreachable</span><br><span class="line">May 29 14:14:34 test postfix/smtp[2940]: E275A601B5: to=&lt;962584902@qq.com&gt;, relay=mx3.qq.com[183.57.48.35]:25, delay=1.4, delays=0.02/0.01/0.17/1.2, dsn=2.0.0, status=sent (250 Ok: queued as )</span><br><span class="line">May 29 14:14:34 test postfix/qmgr[2417]: E275A601B5: removed</span><br></pre></td></tr></table></figure><blockquote><p>去qq邮箱看看</p></blockquote><img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq.png" title="验证">]]></content>
+      
+      
+        <tags>
+            
+            <tag> postfix </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>mysql创建数据库,用户,及授权</title>
       <link href="/2018/05/28/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%94%A8%E6%88%B7-%E5%8F%8A%E6%8E%88%E6%9D%83/"/>
       <url>/2018/05/28/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%94%A8%E6%88%B7-%E5%8F%8A%E6%8E%88%E6%9D%83/</url>

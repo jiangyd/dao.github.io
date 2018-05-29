@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="postfix," />
 
 
 
@@ -79,13 +79,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="睡着了去做梦">
-<meta property="og:url" content="http://yoursite.com/tags/chromedriver/index.html">
+<meta name="description" content="设置主机名为test.cn  1$ sudo vim /etc/hostname  查看主机名设置是否生效  12$ hostnametest.cn  更新及安装  12$ sudo apt-get update$ sudo apt-get install postfix    安装完成后监听端口  1234$ netstat -lntp|grep 25(No info could be rea">
+<meta name="keywords" content="postfix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建postfix邮件服务器">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
+<meta property="og:description" content="设置主机名为test.cn  1$ sudo vim /etc/hostname  查看主机名设置是否生效  12$ hostnametest.cn  更新及安装  12$ sudo apt-get update$ sudo apt-get install postfix    安装完成后监听端口  1234$ netstat -lntp|grep 25(No info could be rea">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/mail_configuration.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/mail_name.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/mail_to_qq.png">
+<meta property="og:updated_time" content="2018-05-29T06:17:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="睡着了去做梦">
+<meta name="twitter:title" content="搭建postfix邮件服务器">
+<meta name="twitter:description" content="设置主机名为test.cn  1$ sudo vim /etc/hostname  查看主机名设置是否生效  12$ hostnametest.cn  更新及安装  12$ sudo apt-get update$ sudo apt-get install postfix    安装完成后监听端口  1234$ netstat -lntp|grep 25(No info could be rea">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/mail_configuration.png">
 
 
 
@@ -115,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/chromedriver/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/"/>
 
 
 
 
 
-  <title>标签: chromedriver | 睡着了去做梦</title>
+  <title>搭建postfix邮件服务器 | 睡着了去做梦</title>
   
 
 
@@ -140,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,54 +287,176 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>chromedriver<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/23/记一次selenium-一打开浏览器就自动关闭了的问题-Only-local-connections-are-allowed/" itemprop="url">
-              
-                <span itemprop="name">记一次selenium 一打开浏览器就自动关闭了的问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">搭建postfix邮件服务器</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T21:53:24+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T13:59:59+08:00">
+                2018-05-29
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>设置主机名为test.cn</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/hostname</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看主机名设置是否生效</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hostname</span><br><span class="line">test.cn</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更新及安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install postfix</span><br></pre></td></tr></table></figure>
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_configuration.png" title="选择Internet Site">
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_name.png" title="设置mail name">
+<blockquote>
+<p>安装完成后监听端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -lntp|grep 25</span><br><span class="line">(No info could be read for &quot;-p&quot;: geteuid()=1000 but you should be root.)</span><br><span class="line">tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      -</span><br><span class="line">tcp6       0      0 :::25                   :::*                    LISTEN      -</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装mail测试下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mailutils</span><br><span class="line">$ echo &quot;this is a test email&quot; |mail &quot;962584902@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>看看日志是否正常</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tailf /var/log/mail.log</span><br><span class="line">May 29 14:14:32 test postfix/pickup[2416]: E275A601B5: uid=1000 from=&lt;jiangyd@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/cleanup[2938]: E275A601B5: message-id=&lt;20180529061432.E275A601B5@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/qmgr[2417]: E275A601B5: from=&lt;jiangyd@test.cn&gt;, size=320, nrcpt=1 (queue active)</span><br><span class="line">May 29 14:14:33 test postfix/smtp[2940]: connect to mx3.qq.com[240e:ff:f040:28::f]:25: Network is unreachable</span><br><span class="line">May 29 14:14:34 test postfix/smtp[2940]: E275A601B5: to=&lt;962584902@qq.com&gt;, relay=mx3.qq.com[183.57.48.35]:25, delay=1.4, delays=0.02/0.01/0.17/1.2, dsn=2.0.0, status=sent (250 Ok: queued as )</span><br><span class="line">May 29 14:14:34 test postfix/qmgr[2417]: E275A601B5: removed</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>去qq邮箱看看</p>
+</blockquote>
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq.png" title="验证">
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/postfix/" rel="tag"># postfix</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/28/mysql创建数据库-用户-及授权/" rel="next" title="mysql创建数据库,用户,及授权">
+                <i class="fa fa-chevron-left"></i> mysql创建数据库,用户,及授权
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +464,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -545,6 +680,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
