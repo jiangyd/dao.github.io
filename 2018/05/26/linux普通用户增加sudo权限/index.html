@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sudo," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="普通用户执行sudo没有权限 1234$ sudo apt-get updatesudo: unable to resolve host dest1[sudo] password for test: test is not in the sudoers file.  This incident will be reported.  解决办法: 切换到超管用户编辑vim /etc/sudoers,把">
+<meta name="keywords" content="sudo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux普通用户增加sudo权限">
+<meta property="og:url" content="http://yoursite.com/2018/05/26/linux普通用户增加sudo权限/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
-<meta property="og:description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
+<meta property="og:description" content="普通用户执行sudo没有权限 1234$ sudo apt-get updatesudo: unable to resolve host dest1[sudo] password for test: test is not in the sudoers file.  This incident will be reported.  解决办法: 切换到超管用户编辑vim /etc/sudoers,把">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T11:37:23.000Z">
+<meta property="og:updated_time" content="2018-06-13T09:08:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
+<meta name="twitter:title" content="linux普通用户增加sudo权限">
+<meta name="twitter:description" content="普通用户执行sudo没有权限 1234$ sudo apt-get updatesudo: unable to resolve host dest1[sudo] password for test: test is not in the sudoers file.  This incident will be reported.  解决办法: 切换到超管用户编辑vim /etc/sudoers,把">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/26/linux普通用户增加sudo权限/"/>
 
 
 
 
 
-  <title>关于我 | 睡着了去做梦</title>
+  <title>linux普通用户增加sudo权限 | 睡着了去做梦</title>
   
 
 
@@ -284,35 +285,154 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/26/linux普通用户增加sudo权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">关于我</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>“天行健，君子以自强不息”</p>
-<p>“地势坤，君子以厚德载物”</p>
-
+          <h1 class="post-title" itemprop="name headline">linux普通用户增加sudo权限</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T15:31:43+08:00">
+                2018-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>普通用户执行sudo没有权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">sudo: unable to resolve host dest1</span><br><span class="line">[sudo] password for test: </span><br><span class="line">test is not in the sudoers file.  This incident will be reported.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解决办法: 切换到超管用户编辑vim /etc/sudoers,把用户增加进去</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root	ALL=(ALL:ALL) ALL</span><br><span class="line">test    ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>编辑完成后，退出时需要增加!,使用:wq!退出，因为是只读文件</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sudo/" rel="tag"># sudo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/记一次selenium-一打开浏览器就自动关闭了的问题-Only-local-connections-are-allowed/" rel="next" title="记一次selenium 一打开浏览器就自动关闭了的问题">
+                <i class="fa fa-chevron-left"></i> 记一次selenium 一打开浏览器就自动关闭了的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/28/mysql创建数据库-用户-及授权/" rel="prev" title="mysql创建数据库,用户,及授权">
+                mysql创建数据库,用户,及授权 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

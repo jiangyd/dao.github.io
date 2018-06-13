@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="nginx,ssl,https," />
 
 
 
@@ -79,17 +79,25 @@
 
 
 
-<meta name="description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="首先需要有域名，正好我有个域名testwd.cn 给域名申请证书，可以找个免费的https://freessl.org/，也可以找个花钱的 阿里云ecs一台,需要有公网ip   首先给域名申请证书    把验证信息添加到DNS服务商解析记录     验证通过后，下载证书    nginx配置  把证书内容拷贝到/home/testwd.cn.crt;把私钥内容拷贝到/home/testwd.cn">
+<meta name="keywords" content="nginx,ssl,https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置https简单实例">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
-<meta property="og:description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
+<meta property="og:description" content="首先需要有域名，正好我有个域名testwd.cn 给域名申请证书，可以找个免费的https://freessl.org/，也可以找个花钱的 阿里云ecs一台,需要有公网ip   首先给域名申请证书    把验证信息添加到DNS服务商解析记录     验证通过后，下载证书    nginx配置  把证书内容拷贝到/home/testwd.cn.crt;把私钥内容拷贝到/home/testwd.cn">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T11:37:23.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/freessl.org.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/yanzhen.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/dns_auth.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/crt_key.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/dns_ip.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/success.jpg">
+<meta property="og:updated_time" content="2018-06-13T09:08:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="“天行健，君子以自强不息” “地势坤，君子以厚德载物”">
+<meta name="twitter:title" content="nginx配置https简单实例">
+<meta name="twitter:description" content="首先需要有域名，正好我有个域名testwd.cn 给域名申请证书，可以找个免费的https://freessl.org/，也可以找个花钱的 阿里云ecs一台,需要有公网ip   首先给域名申请证书    把验证信息添加到DNS服务商解析记录     验证通过后，下载证书    nginx配置  把证书内容拷贝到/home/testwd.cn.crt;把私钥内容拷贝到/home/testwd.cn">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/31/nginx配置https简单实例/freessl.org.jpg">
 
 
 
@@ -119,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/31/nginx配置https简单实例/"/>
 
 
 
 
 
-  <title>关于我 | 睡着了去做梦</title>
+  <title>nginx配置https简单实例 | 睡着了去做梦</title>
   
 
 
@@ -284,35 +292,193 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/nginx配置https简单实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">关于我</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>“天行健，君子以自强不息”</p>
-<p>“地势坤，君子以厚德载物”</p>
-
+          <h1 class="post-title" itemprop="name headline">nginx配置https简单实例</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T07:59:25+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <ol>
+<li>首先需要有域名，正好我有个域名testwd.cn</li>
+<li>给域名申请证书，可以找个免费的<a href="https://freessl.org/" target="_blank" rel="noopener">https://freessl.org/</a>，也可以找个花钱的</li>
+<li>阿里云ecs一台,需要有公网ip</li>
+</ol>
+<blockquote>
+<p>首先给域名申请证书</p>
+</blockquote>
+<img src="/2018/05/31/nginx配置https简单实例/freessl.org.jpg" title="申请证书示范">
+<blockquote>
+<p>把验证信息添加到DNS服务商解析记录</p>
+</blockquote>
+<img src="/2018/05/31/nginx配置https简单实例/yanzhen.jpg" title="验证">
+<img src="/2018/05/31/nginx配置https简单实例/dns_auth.jpg" title="添加验证解析">
+<blockquote>
+<p>验证通过后，下载证书</p>
+</blockquote>
+<img src="/2018/05/31/nginx配置https简单实例/crt_key.jpg" title="拷贝证书内容及私钥">
+<blockquote>
+<p>nginx配置</p>
+</blockquote>
+<p>把证书内容拷贝到/home/testwd.cn.crt;<br>把私钥内容拷贝到/home/testwd.cn.key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/nginx/conf.d/test.conf </span><br><span class="line">server &#123;</span><br><span class="line">  listen 443 ssl;</span><br><span class="line">  ssl on;</span><br><span class="line">  server_name web.testwd.cn;</span><br><span class="line"></span><br><span class="line">  index index.html;</span><br><span class="line">  root /home/dist/;</span><br><span class="line"></span><br><span class="line">  ssl_certificate /home/testwd.cn.crt;</span><br><span class="line">  ssl_certificate_key /home/testwd.cn.key;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看本ecs实例公网ip</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># curl ip.sb</span><br><span class="line">47.96.86.120</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>配置DNS域名解析到ip</p>
+</blockquote>
+<img src="/2018/05/31/nginx配置https简单实例/dns_ip.jpg" title="域名解析到公网ip">
+<blockquote>
+<p>重新启动nginx</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># /etc/init.d/nginx restart</span><br><span class="line">[ ok ] Restarting nginx (via systemctl): nginx.service.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看是否监听443端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># netstat -lntp</span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      836/sshd        </span><br><span class="line">tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      17588/nginx -g daem</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      17588/nginx -g daem</span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      17588/nginx -g daem</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>验证通过https访问</p>
+</blockquote>
+<img src="/2018/05/31/nginx配置https简单实例/success.jpg" title="成功界面">
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+            <a href="/tags/ssl/" rel="tag"># ssl</a>
+          
+            <a href="/tags/https/" rel="tag"># https</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/29/搭建postfix邮件服务器/" rel="next" title="搭建postfix邮件服务器">
+                <i class="fa fa-chevron-left"></i> 搭建postfix邮件服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/06/docker-build镜像，运行镜像出现问题/" rel="prev" title="docker build镜像，运行镜像出现问题">
+                docker build镜像，运行镜像出现问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
