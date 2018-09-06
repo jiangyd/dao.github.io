@@ -293,6 +293,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/搭建postfix邮件服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/29/搭建postfix邮件服务器/" itemprop="url">搭建postfix邮件服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T13:59:59+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>设置主机名为test.cn</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/hostname</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看主机名设置是否生效</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hostname</span><br><span class="line">test.cn</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更新及安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install postfix</span><br></pre></td></tr></table></figure>
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_configuration.png" title="选择Internet Site">
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_name.png" title="设置mail name">
+<blockquote>
+<p>安装完成后监听端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -lntp|grep 25</span><br><span class="line">(No info could be read for &quot;-p&quot;: geteuid()=1000 but you should be root.)</span><br><span class="line">tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      -</span><br><span class="line">tcp6       0      0 :::25                   :::*                    LISTEN      -</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装mail测试下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mailutils</span><br><span class="line">$ echo &quot;this is a test email&quot; |mail &quot;962584902@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>看看日志是否正常</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tailf /var/log/mail.log</span><br><span class="line">May 29 14:14:32 test postfix/pickup[2416]: E275A601B5: uid=1000 from=&lt;jiangyd@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/cleanup[2938]: E275A601B5: message-id=&lt;20180529061432.E275A601B5@test.cn&gt;</span><br><span class="line">May 29 14:14:32 test postfix/qmgr[2417]: E275A601B5: from=&lt;jiangyd@test.cn&gt;, size=320, nrcpt=1 (queue active)</span><br><span class="line">May 29 14:14:33 test postfix/smtp[2940]: connect to mx3.qq.com[240e:ff:f040:28::f]:25: Network is unreachable</span><br><span class="line">May 29 14:14:34 test postfix/smtp[2940]: E275A601B5: to=&lt;962584902@qq.com&gt;, relay=mx3.qq.com[183.57.48.35]:25, delay=1.4, delays=0.02/0.01/0.17/1.2, dsn=2.0.0, status=sent (250 Ok: queued as )</span><br><span class="line">May 29 14:14:34 test postfix/qmgr[2417]: E275A601B5: removed</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>去qq邮箱看看</p>
+</blockquote>
+<img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq.png" title="验证">
+<blockquote>
+<p>试试其它机器，连接邮件服务器来发邮件，并用python实现</p>
+</blockquote>
+<p>其它机器要能访问test.cn这个地址，可以本地绑定host</p>
+<blockquote>
+<p>python脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># coding=utf-8</span><br><span class="line">__author__ = &apos;jyd&apos;</span><br><span class="line"></span><br><span class="line">import smtplib</span><br><span class="line"></span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line"></span><br><span class="line">smtpserver = &quot;test.cn&quot;</span><br><span class="line">username = &quot;jiangyd@test.cn&quot;</span><br><span class="line"></span><br><span class="line">msg = MIMEText(&quot;你好，这是一封测试邮件&quot;)</span><br><span class="line">msg[&apos;subject&apos;] = &quot;测试邮件&quot;</span><br><span class="line">msg[&apos;From&apos;] = &quot;jiangyd@test.cn&quot;</span><br><span class="line">msg[&apos;To&apos;] = &quot;962584902@qq.com&quot;</span><br><span class="line"></span><br><span class="line">smtp = smtplib.SMTP()</span><br><span class="line">smtp.connect(smtpserver)</span><br><span class="line">smtp.sendmail(msg[&apos;From&apos;], msg[&apos;To&apos;], msg.as_string())</span><br><span class="line">smtp.quit()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行以上脚本报错了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    raise SMTPRecipientsRefused(senderrs)</span><br><span class="line">smtplib.SMTPRecipientsRefused: &#123;&apos;962584902@qq.com&apos;: (454, b&apos;4.7.1 &lt;962584902@qq.com&gt;: Relay access denied&apos;)&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>看看日志，发现是访问被拒绝了,不允许这个192.168.56.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tailf /var/log/mail.log</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: connect from unknown[192.168.56.1]</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: NOQUEUE: reject: RCPT from unknown[192.168.56.1]: 454 4.7.1 &lt;962584902@qq.com&gt;: Relay access denied; from=&lt;jiangyd@test.cn&gt; to=&lt;962584902@qq.com&gt; proto=ESMTP helo=&lt;jiangyd.local&gt;</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: lost connection after RSET from unknown[192.168.56.1]</span><br><span class="line">May 29 14:26:33 test postfix/smtpd[3171]: disconnect from unknown[192.168.56.1]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>更改设置 增加可信客户端网段192.168.56.0/24,也可是增加万能的0.0.0.0/0</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/postfix/main.cf</span><br><span class="line">mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.56.0/24</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更改后需要重启<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /etc/init.d/postfix restart</span><br><span class="line">sudo: unable to resolve host test.cn</span><br><span class="line"> * Stopping Postfix Mail Transport Agent postfix                                     [ OK ]</span><br><span class="line"> * Starting Postfix Mail Transport Agent postfix                                     [ OK ]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>再次验证<br><img src="/2018/05/29/搭建postfix邮件服务器/mail_to_qq_python.png" title="设置mail name"></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/mysql创建数据库-用户-及授权/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,155 +1657,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/ubuntu使用bind9搭建DNS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江永道">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="睡着了去做梦">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/07/ubuntu使用bind9搭建DNS/" itemprop="url">ubuntu使用bind9搭建DNS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T12:12:48+08:00">
-                2018-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装bind9"><a href="#安装bind9" class="headerlink" title="安装bind9"></a>安装bind9</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install bind9</span><br></pre></td></tr></table></figure>
-<h4 id="默认配置文件路径"><a href="#默认配置文件路径" class="headerlink" title="默认配置文件路径"></a>默认配置文件路径</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/etc/bind</span><br></pre></td></tr></table></figure>
-<h4 id="添加域名正反向解析配置"><a href="#添加域名正反向解析配置" class="headerlink" title="添加域名正反向解析配置"></a>添加域名正反向解析配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim named.conf.default-zones</span><br><span class="line"></span><br><span class="line">zone &quot;jiangyd.cn&quot; &#123;</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;/etc/bind/db.jiangyd.cn&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;56.168.192.in-addr.arpa&quot; &#123;</span><br><span class="line">	type master;</span><br><span class="line">	file &quot;/etc/bind/192.168.56.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zone &quot;ipad.jiangyd.com.cn&quot; &#123;</span><br><span class="line">	type master;</span><br><span class="line">	file &quot;/etc/bind/ipad.jiangyd.com.cn&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>正向解析</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># cat db.jiangyd.cn</span><br><span class="line">;</span><br><span class="line">; BIND data file for local loopback interface</span><br><span class="line">;</span><br><span class="line">$TTL	604800</span><br><span class="line">@	IN	SOA	jiangyd.cn. root.localhost. (</span><br><span class="line">			      2		; Serial</span><br><span class="line">			 604800		; Refresh</span><br><span class="line">			  86400		; Retry</span><br><span class="line">			2419200		; Expire</span><br><span class="line">			 604800 )	; Negative Cache TTL</span><br><span class="line">;</span><br><span class="line">@	IN	NS	jiangyd.cn.</span><br><span class="line">@	IN	A	127.0.0.1</span><br><span class="line">@	IN	AAAA	::1</span><br><span class="line"></span><br><span class="line">www     IN      A      192.168.56.102</span><br><span class="line">bbs     IN      A      192.168.56.102</span><br><span class="line">music   IN      A      192.168.56.1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>反向解析</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># cat 192.168.56.zone</span><br><span class="line">;</span><br><span class="line">; BIND reverse data file for local loopback interface</span><br><span class="line">;</span><br><span class="line">$TTL	604800</span><br><span class="line">@	IN	SOA	jiangyd.cn. root.localhost. (</span><br><span class="line">			      1		; Serial</span><br><span class="line">			 604800		; Refresh</span><br><span class="line">			  86400		; Retry</span><br><span class="line">			2419200		; Expire</span><br><span class="line">			 604800 )	; Negative Cache TTL</span><br><span class="line">;</span><br><span class="line">@	IN	NS     jiangyd.cn.</span><br><span class="line">102     IN      PTR    www.jiangyd.cn.</span><br><span class="line">102     IN      PTR    bbs.jiangyd.cn.</span><br><span class="line">1       IN      PTR    music.jiangyd.cn.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>有的应用需要为不同用户分配不同域名，试试泛解析</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># cat ipad.jiangyd.com.cn</span><br><span class="line">;</span><br><span class="line">; BIND data file for local loopback interface</span><br><span class="line">;</span><br><span class="line">$TTL	604800</span><br><span class="line">@	IN	SOA	ipad.jiangyd.com.cn. root.localhost. (</span><br><span class="line">			      2		; Serial</span><br><span class="line">			 604800		; Refresh</span><br><span class="line">			  86400		; Retry</span><br><span class="line">			2419200		; Expire</span><br><span class="line">			 604800 )	; Negative Cache TTL</span><br><span class="line">;</span><br><span class="line">@	IN	NS	ipad.jiangyd.com.cn.</span><br><span class="line">@	IN	A	127.0.0.1</span><br><span class="line">@	IN	AAAA	::1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">www  IN  A  192.168.56.1</span><br><span class="line">bbs  IN  A  192.168.56.102</span><br><span class="line">*    IN  A  192.168.56.1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>正反向解析测试</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">root@jiangydpc:/etc/bind# ping www.jiangyd.cn</span><br><span class="line">PING www.jiangyd.cn (192.168.56.102) 56(84) bytes of data.</span><br><span class="line">64 bytes from dns.jiangyd.cn (192.168.56.102): icmp_seq=1 ttl=64 time=0.069 ms</span><br><span class="line">64 bytes from dns.jiangyd.cn (192.168.56.102): icmp_seq=2 ttl=64 time=0.026 ms</span><br><span class="line">^C</span><br><span class="line">--- www.jiangyd.cn ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 999ms</span><br><span class="line">rtt min/avg/max/mdev = 0.026/0.047/0.069/0.022 ms</span><br><span class="line">root@jiangydpc:/etc/bind# ping bbs.jiangyd.cn</span><br><span class="line">PING bbs.jiangyd.cn (192.168.56.102) 56(84) bytes of data.</span><br><span class="line">64 bytes from www.jiangyd.cn (192.168.56.102): icmp_seq=1 ttl=64 time=0.010 ms</span><br><span class="line">64 bytes from www.jiangyd.cn (192.168.56.102): icmp_seq=2 ttl=64 time=0.023 ms</span><br><span class="line">^C</span><br><span class="line">--- bbs.jiangyd.cn ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 999ms</span><br><span class="line">rtt min/avg/max/mdev = 0.010/0.016/0.023/0.007 ms</span><br><span class="line">root@jiangydpc:/etc/bind# ping music.jiangyd.cn</span><br><span class="line">PING music.jiangyd.cn (192.168.56.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=1 ttl=64 time=0.277 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=2 ttl=64 time=0.355 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=3 ttl=64 time=0.203 ms</span><br><span class="line">^C</span><br><span class="line">--- music.jiangyd.cn ping statistics ---</span><br><span class="line">3 packets transmitted, 3 received, 0% packet loss, time 1999ms</span><br><span class="line">rtt min/avg/max/mdev = 0.203/0.278/0.355/0.063 ms</span><br><span class="line">root@jiangydpc:/etc/bind# host -t PTR 192.168.56.1</span><br><span class="line">1.56.168.192.in-addr.arpa domain name pointer music.jiangyd.cn.</span><br><span class="line">root@jiangydpc:/etc/bind# host -t PTR 192.168.56.102</span><br><span class="line">102.56.168.192.in-addr.arpa domain name pointer dns.jiangyd.cn.</span><br><span class="line">102.56.168.192.in-addr.arpa domain name pointer www.jiangyd.cn.</span><br><span class="line">102.56.168.192.in-addr.arpa domain name pointer bbs.jiangyd.cn.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>泛解析,前面域名可以随便填写了</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">root@jiangydpc:/etc/bind# ping wqewweq.ipad.jiangyd.com.cn</span><br><span class="line">PING wqewweq.ipad.jiangyd.com.cn (192.168.56.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=1 ttl=64 time=0.295 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=2 ttl=64 time=0.358 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=3 ttl=64 time=0.246 ms</span><br><span class="line">^C</span><br><span class="line">--- wqewweq.ipad.jiangyd.com.cn ping statistics ---</span><br><span class="line">3 packets transmitted, 3 received, 0% packet loss, time 2000ms</span><br><span class="line">rtt min/avg/max/mdev = 0.246/0.299/0.358/0.050 ms</span><br><span class="line">root@jiangydpc:/etc/bind# ping www.ipad.jiangyd.com.cn</span><br><span class="line">PING www.ipad.jiangyd.com.cn (192.168.56.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=1 ttl=64 time=0.194 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=2 ttl=64 time=0.289 ms</span><br><span class="line">^C</span><br><span class="line">--- www.ipad.jiangyd.com.cn ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1002ms</span><br><span class="line">rtt min/avg/max/mdev = 0.194/0.241/0.289/0.049 ms</span><br><span class="line">root@jiangydpc:/etc/bind# ping bbs.ipad.jiangyd.com.cn</span><br><span class="line">PING bbs.ipad.jiangyd.com.cn (192.168.56.102) 56(84) bytes of data.</span><br><span class="line">64 bytes from bbs.jiangyd.cn (192.168.56.102): icmp_seq=1 ttl=64 time=0.019 ms</span><br><span class="line">64 bytes from bbs.jiangyd.cn (192.168.56.102): icmp_seq=2 ttl=64 time=0.030 ms</span><br><span class="line">^C</span><br><span class="line">--- bbs.ipad.jiangyd.com.cn ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1001ms</span><br><span class="line">rtt min/avg/max/mdev = 0.019/0.024/0.030/0.007 ms</span><br><span class="line">root@jiangydpc:/etc/bind# ping 56789.ipad.jiangyd.com.cn</span><br><span class="line">PING 56789.ipad.jiangyd.com.cn (192.168.56.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=1 ttl=64 time=0.343 ms</span><br><span class="line">64 bytes from music.jiangyd.cn (192.168.56.1): icmp_seq=2 ttl=64 time=0.306 ms</span><br><span class="line">^C</span><br><span class="line">--- 56789.ipad.jiangyd.com.cn ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 999ms</span><br><span class="line">rtt min/avg/max/mdev = 0.306/0.324/0.343/0.025 ms</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>查看日志<br>我的系统是ubuntu 14.04 </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tailf /var/log/syslog</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>bind9 重启，停止，状态,及端口</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># /etc/init.d/bind9 status</span><br><span class="line"> * bind9 is running</span><br><span class="line">root@jiangydpc:/etc/bind# /etc/init.d/bind9 stop</span><br><span class="line"> * Stopping domain name service... bind9                                                                                                     waiting for pid 4039 to die</span><br><span class="line">                                                                                                                                      [ OK ]</span><br><span class="line">root@jiangydpc:/etc/bind# /etc/init.d/bind9 start</span><br><span class="line"> * Starting domain name service... bind9                                                                                              [ OK ]</span><br><span class="line">root@jiangydpc:/etc/bind# /etc/init.d/bind9 restart</span><br><span class="line"> * Stopping domain name service... bind9                                                                                              [ OK ]</span><br><span class="line"> * Starting domain name service... bind9                                                                                              [ OK ]</span><br><span class="line">root@jiangydpc:/etc/bind# netstat -lntp</span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</span><br><span class="line">tcp        0      0 192.168.56.102:53       0.0.0.0:*               LISTEN      4133/named</span><br><span class="line">tcp        0      0 10.100.3.52:53          0.0.0.0:*               LISTEN      4133/named</span><br><span class="line">tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      4133/named</span><br><span class="line">tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      4133/named</span><br><span class="line">tcp        0      0 127.0.0.1:8123          0.0.0.0:*               LISTEN      1229/polipo</span><br><span class="line">tcp        0      0 0.0.0.0:3333            0.0.0.0:*               LISTEN      1092/sshd</span><br><span class="line">tcp6       0      0 :::53                   :::*                    LISTEN      4133/named</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1686,7 +1711,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1697,7 +1722,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1708,7 +1733,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
