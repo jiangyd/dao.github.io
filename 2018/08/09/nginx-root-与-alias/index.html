@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/09/nginx-root-与-alias/root.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/09/nginx-root-与-alias/alias.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/09/nginx-root-与-alias/alias_root.png">
-<meta property="og:updated_time" content="2018-09-12T07:11:31.000Z">
+<meta property="og:updated_time" content="2018-09-12T07:14:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx root 与 alias">
 <meta name="twitter:description" content="先看看nginx的配置文件123456789101112131415server &amp;#123;  listen 8090;  server_name 192.168.56.102;  location /root &amp;#123;    index index.html;    root /home;  &amp;#125;  location /alias &amp;#123;    index index.htm">
@@ -396,7 +396,9 @@
 <blockquote>
 <p>nginx 中在location中使用root，路径为 root定义的目录(/home)＋访问的目录(/root)+具体文件</p>
 </blockquote>
+<blockquote>
 <p>在location中使用alias，路径为 root定义的目录(/home)+具体路径文件</p>
+</blockquote>
 <h4 id="假设我想通过-alias访问-home-root-index-html这个文件我应该怎么做"><a href="#假设我想通过-alias访问-home-root-index-html这个文件我应该怎么做" class="headerlink" title="假设我想通过/alias访问 /home/root/index.html这个文件我应该怎么做?"></a>假设我想通过/alias访问 /home/root/index.html这个文件我应该怎么做?</h4><img src="/2018/08/09/nginx-root-与-alias/alias_root.png">
 
       
