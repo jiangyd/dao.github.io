@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[nginx root 与 alias]]></title>
     <url>%2F2018%2F08%2F09%2Fnginx-root-%E4%B8%8E-alias%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[先看看nginx的配置文件123456789101112131415server &#123; listen 8090; server_name 192.168.56.102; location /root &#123; index index.html; root /home; &#125; location /alias &#123; index index.html; alias /home; &#125;&#125; 先访问 http://192.168.56.102/root 再试试访问 http://192.168.56.102/alias nginx 中在location中使用root，路径为 root定义的目录(/home)＋访问的目录(/root)+具体文件 在location中使用alias，路径为 root定义的目录(/home)+具体路径文件 假设我想通过/alias访问 /home/root/index.html这个文件我应该怎么做?]]></content>
       <categories>
         <category>nginx</category>
       </categories>
