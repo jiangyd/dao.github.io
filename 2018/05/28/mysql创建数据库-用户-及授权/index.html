@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功  12mysql&amp;gt; create database  `testdb` default character set utf8 default collate utf8_general_ci;Query OK, 1 row affected (0.00 sec)  创建用户  12mysql&amp;gt">
+<meta name="description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功   加上反撇号的还有一层用意,使用mysql中的关键字命名不会报错  1234567mysql&amp;gt; create database create;ERROR 1064 (42000): You have an error in your SQL syntax; check the manual t">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql创建数据库,用户,及授权">
 <meta property="og:url" content="http://yoursite.com/2018/05/28/mysql创建数据库-用户-及授权/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
-<meta property="og:description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功  12mysql&amp;gt; create database  `testdb` default character set utf8 default collate utf8_general_ci;Query OK, 1 row affected (0.00 sec)  创建用户  12mysql&amp;gt">
+<meta property="og:description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功   加上反撇号的还有一层用意,使用mysql中的关键字命名不会报错  1234567mysql&amp;gt; create database create;ERROR 1064 (42000): You have an error in your SQL syntax; check the manual t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T03:13:11.000Z">
+<meta property="og:updated_time" content="2018-09-26T00:56:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql创建数据库,用户,及授权">
-<meta name="twitter:description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功  12mysql&amp;gt; create database  `testdb` default character set utf8 default collate utf8_general_ci;Query OK, 1 row affected (0.00 sec)  创建用户  12mysql&amp;gt">
+<meta name="twitter:description" content="创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功   加上反撇号的还有一层用意,使用mysql中的关键字命名不会报错  1234567mysql&amp;gt; create database create;ERROR 1064 (42000): You have an error in your SQL syntax; check the manual t">
 
 
 
@@ -367,6 +367,10 @@
         <blockquote>
 <p>创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功</p>
 </blockquote>
+<blockquote>
+<p>加上反撇号的还有一层用意,使用mysql中的关键字命名不会报错</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database create;</span><br><span class="line">ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;create&apos; at line 1</span><br><span class="line">mysql&gt; create database crtest;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; create database `create`;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database  `testdb` default character set utf8 default collate utf8_general_ci;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>创建用户</p>
@@ -501,7 +505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -523,7 +527,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
