@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="睡着了去做梦">
 <meta property="og:description" content="一个简单的sql查询语句竟然还报错  12345678910111213mysql&amp;gt; insert into jj values (&amp;apos;端口&amp;apos;);Query OK, 1 row affected, 1 warning (0.02 sec)mysql&amp;gt; select * from jj;+------+| name |+------+| ??   |+------+1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T00:51:12.000Z">
+<meta property="og:updated_time" content="2018-09-26T12:59:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql select 语句的时候报错: ERROR 1267 (HY000): Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation &#39;=&#39;">
 <meta name="twitter:description" content="一个简单的sql查询语句竟然还报错  12345678910111213mysql&amp;gt; insert into jj values (&amp;apos;端口&amp;apos;);Query OK, 1 row affected, 1 warning (0.02 sec)mysql&amp;gt; select * from jj;+------+| name |+------+| ??   |+------+1">
@@ -380,6 +380,9 @@
 <p>问题虽然解决了，但是为什么会出现此问题，我们先尝试创建一个新表，查看下字符编码,发现编码也是<br>latin1，再次查看数据库(csos)的编码,应该不难发现源头就在这里</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table cc (name varchar(20));</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show create table cc;</span><br><span class="line">+-------+----------------------------------------------------------------------------------------------+</span><br><span class="line">| Table | Create Table                                                                                 |</span><br><span class="line">+-------+----------------------------------------------------------------------------------------------+</span><br><span class="line">| cc    | CREATE TABLE `cc` (</span><br><span class="line">  `name` varchar(20) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1 |</span><br><span class="line">+-------+----------------------------------------------------------------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW CREATE DATABASE csos;</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">| Database | Create Database                                                 |</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">| csos     | CREATE DATABASE `csos` /*!40100 DEFAULT CHARACTER SET latin1 */ |</span><br><span class="line">+----------+-----------------------------------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>所以创建数据库的时候，应该指定需要的编码</p>
+</blockquote>
 
       
     </div>
@@ -494,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
