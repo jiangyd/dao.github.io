@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="userAgent," />
 
 
 
@@ -79,13 +79,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="睡着了去做梦">
-<meta property="og:url" content="http://yoursite.com/tags/跨域/index.html">
+<meta name="description" content="某功能需求，如果是windows访问系统就提示ctrl+v,如果是Mac访问系统就提示command+v,仅仅是提示信息不需要与后端交互 那么通过获取浏览器的userAgent信息就可以做到了,判断不同的userAgent实现对应功能 当然有一些交互的也可以放到后端就做 判断windows系统 判断Mac系统 判断其它系统或设备，如iPad，iPhone，android 后端应用通过从header">
+<meta name="keywords" content="userAgent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过判断浏览器信息给用户显示不同页面或不同功能">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/index.html">
 <meta property="og:site_name" content="睡着了去做梦">
+<meta property="og:description" content="某功能需求，如果是windows访问系统就提示ctrl+v,如果是Mac访问系统就提示command+v,仅仅是提示信息不需要与后端交互 那么通过获取浏览器的userAgent信息就可以做到了,判断不同的userAgent实现对应功能 当然有一些交互的也可以放到后端就做 判断windows系统 判断Mac系统 判断其它系统或设备，如iPad，iPhone，android 后端应用通过从header">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/windows.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/mac.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/other.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/header.png">
+<meta property="og:updated_time" content="2018-09-30T12:57:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="睡着了去做梦">
+<meta name="twitter:title" content="通过判断浏览器信息给用户显示不同页面或不同功能">
+<meta name="twitter:description" content="某功能需求，如果是windows访问系统就提示ctrl+v,如果是Mac访问系统就提示command+v,仅仅是提示信息不需要与后端交互 那么通过获取浏览器的userAgent信息就可以做到了,判断不同的userAgent实现对应功能 当然有一些交互的也可以放到后端就做 判断windows系统 判断Mac系统 判断其它系统或设备，如iPad，iPhone，android 后端应用通过从header">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/windows.png">
 
 
 
@@ -115,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/跨域/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/"/>
 
 
 
 
 
-  <title>标签: 跨域 | 睡着了去做梦</title>
+  <title>通过判断浏览器信息给用户显示不同页面或不同功能 | 睡着了去做梦</title>
   
 
 
@@ -140,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,54 +288,152 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>跨域<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/14/跨域仅仅是错误表现之一/" itemprop="url">
-              
-                <span itemprop="name">跨域仅仅是错误表现之一</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">通过判断浏览器信息给用户显示不同页面或不同功能</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-14T09:33:19+08:00"
-              content="2018-09-14" >
-          09-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T20:30:14+08:00">
+                2018-09-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <p>某功能需求，如果是windows访问系统就提示ctrl+v,如果是Mac访问系统就提示command+v,仅仅是提示信息不需要与后端交互</p>
+<p>那么通过获取浏览器的userAgent信息就可以做到了,判断不同的userAgent实现对应功能</p>
+<p>当然有一些交互的也可以放到后端就做</p>
+<h4 id="判断windows系统"><a href="#判断windows系统" class="headerlink" title="判断windows系统"></a>判断windows系统</h4><img src="/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/windows.png">
+<h4 id="判断Mac系统"><a href="#判断Mac系统" class="headerlink" title="判断Mac系统"></a>判断Mac系统</h4><img src="/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/mac.png">
+<h4 id="判断其它系统或设备，如iPad，iPhone，android"><a href="#判断其它系统或设备，如iPad，iPhone，android" class="headerlink" title="判断其它系统或设备，如iPad，iPhone，android"></a>判断其它系统或设备，如iPad，iPhone，android</h4><img src="/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/other.png">
+<h4 id="后端应用通过从header中获取User-Agent信息来判断"><a href="#后端应用通过从header中获取User-Agent信息来判断" class="headerlink" title="后端应用通过从header中获取User-Agent信息来判断"></a>后端应用通过从header中获取User-Agent信息来判断</h4><img src="/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/header.png">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/userAgent/" rel="tag"># userAgent</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/chrome-控制台某请求没有显示响应内容/" rel="next" title="chrome 控制台某请求没有显示响应内容">
+                <i class="fa fa-chevron-left"></i> chrome 控制台某请求没有显示响应内容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +441,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -353,8 +465,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -418,6 +539,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断windows系统"><span class="nav-number">1.</span> <span class="nav-text">判断windows系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断Mac系统"><span class="nav-number">2.</span> <span class="nav-text">判断Mac系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断其它系统或设备，如iPad，iPhone，android"><span class="nav-number">3.</span> <span class="nav-text">判断其它系统或设备，如iPad，iPhone，android</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后端应用通过从header中获取User-Agent信息来判断"><span class="nav-number">4.</span> <span class="nav-text">后端应用通过从header中获取User-Agent信息来判断</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -545,6 +682,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
