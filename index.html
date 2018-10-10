@@ -293,6 +293,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/linux访问Windows的共享文件夹/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江永道">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="睡着了去做梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/08/linux访问Windows的共享文件夹/" itemprop="url">linux访问Windows的共享文件夹</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T19:55:40+08:00">
+                2018-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Windows下要访问Linux下的共享文件夹，需要Linux配置samba服务器，然后Windows直接在地址栏输入\服务器ip地址访问即可<br>在Linux下，访问Windows的共享文件夹，可以使用smbclient,也可以使用mount.cifs</p>
+<h4 id="这里先介绍sambaclient，samba的客户端软件"><a href="#这里先介绍sambaclient，samba的客户端软件" class="headerlink" title="这里先介绍sambaclient，samba的客户端软件"></a>这里先介绍sambaclient，samba的客户端软件</h4><ol>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install smbclient</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>smbclient像FTP一样连接windows的共享文件夹,出现smb: > 表示连接成功了,输入help显示所有命令</p>
+</li>
+</ol>
+<p>输入help 具体命令 查看某命令详细说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># smbclient //192.168.56.101/server</span><br><span class="line">WARNING: The &quot;syslog&quot; option is deprecated</span><br><span class="line">Enter root&apos;s password:</span><br><span class="line">OS=[Windows 7 Ultimate 7601 Service Pack 1] Server=[Windows 7 Ultimate 6.1]</span><br><span class="line">smb: \&gt;</span><br><span class="line">smb: \&gt; help</span><br><span class="line">?              allinfo        altname        archive        backup</span><br><span class="line">blocksize      cancel         case_sensitive cd             chmod</span><br><span class="line">chown          close          del            dir            du</span><br><span class="line">echo           exit           get            getfacl        geteas</span><br><span class="line">hardlink       help           history        iosize         lcd</span><br><span class="line">link           lock           lowercase      ls             l</span><br><span class="line">mask           md             mget           mkdir          more</span><br><span class="line">mput           newer          notify         open           posix</span><br><span class="line">posix_encrypt  posix_open     posix_mkdir    posix_rmdir    posix_unlink</span><br><span class="line">print          prompt         put            pwd            q</span><br><span class="line">queue          quit           readlink       rd             recurse</span><br><span class="line">reget          rename         reput          rm             rmdir</span><br><span class="line">showacls       setea          setmode        scopy          stat</span><br><span class="line">symlink        tar            tarmode        timeout        translate</span><br><span class="line">unlock         volume         vuid           wdel           logon</span><br><span class="line">listconnect    showconnect    tcon           tdis           tid</span><br><span class="line">logoff         ..             !</span><br><span class="line">smb: \&gt; help get</span><br><span class="line">HELP get:</span><br><span class="line">	&lt;remote name&gt; [local name] get a file</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>试下常用的命令，上传下载吧</li>
+</ol>
+<p>下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Wed Oct 10 09:07:43 2018</span><br><span class="line">  ..                                  D        0  Wed Oct 10 09:07:43 2018</span><br><span class="line">  110                                 D        0  Wed Mar 28 16:48:06 2018</span><br><span class="line">  a.txt                               A  6413610  Mon Sep 10 17:50:27 2018</span><br><span class="line"></span><br><span class="line">smb: \&gt; get a.txt /home/jiangyd/a.txt</span><br><span class="line">getting file \a.txt of size 6413610 as /home/jiangyd/a.txt (90772.2 KiloBytes/sec) (average 90772.3 KiloBytes/sec)</span><br></pre></td></tr></table></figure>
+<p>上传</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">smb: \&gt; put /home/jiangyd/d.sql d.sql</span><br><span class="line">putting file /home/jiangyd/d.sql as \d.sql (9.4 kb/s) (average 9.4 kb/s)</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Wed Oct 10 09:15:09 2018</span><br><span class="line">  ..                                  D        0  Wed Oct 10 09:15:09 2018</span><br><span class="line">  110                                 D        0  Wed Mar 28 16:48:06 2018</span><br><span class="line">  a.txt                               A  6413610  Mon Sep 10 17:50:27 2018</span><br><span class="line">  d.sql                               A       48  Wed Oct 10 09:15:09 2018</span><br><span class="line"></span><br><span class="line">		1309951 blocks of size 4096. 144043 blocks available</span><br><span class="line">smb: \&gt; put /home/jiangyd/d.sql 110\d.sql</span><br><span class="line">putting file /home/jiangyd/d.sql as \110\d.sql (11.7 kb/s) (average 10.4 kb/s)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>带用户名密码访问</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@jiangydpc:/home/jiangyd# smbclient //192.168.56.101/server --user=jyd 123456</span><br><span class="line">WARNING: The &quot;syslog&quot; option is deprecated</span><br><span class="line">Domain=[JYD-PC] OS=[Windows 7 Ultimate 7601 Service Pack 1] Server=[Windows 7 Ultimate 6.1]</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Wed Oct 10 09:15:09 2018</span><br><span class="line">  ..                                  D        0  Wed Oct 10 09:15:09 2018</span><br><span class="line">  110                                 D        0  Wed Oct 10 09:15:19 2018</span><br><span class="line">  a.txt                               A  6413610  Mon Sep 10 17:50:27 2018</span><br><span class="line">  d.sql                               A       48  Wed Oct 10 09:16:29 2018</span><br><span class="line"></span><br><span class="line">		1309951 blocks of size 4096. 144043 blocks available</span><br><span class="line">smb: \&gt; exit</span><br></pre></td></tr></table></figure>
+<h4 id="cifs-utils"><a href="#cifs-utils" class="headerlink" title="cifs-utils"></a>cifs-utils</h4><p> mount.cifs - mount using the Common Internet File System (CIFS)  网络文件系统</p>
+<ol>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install cifs-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把Windows共享文件夹csos，挂载到当前路径下Windows目录，使用用户名jyd,密码123456</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/home/jiangyd# mount.cifs //192.168.0.107/csos ./windows/ -o user=jyd,pass=123456</span><br><span class="line">root@ubuntu:/home/jiangyd# ls</span><br><span class="line">test  windows</span><br><span class="line">root@ubuntu:/home/jiangyd# cd windows/</span><br><span class="line">root@ubuntu:/home/jiangyd/windows# ls</span><br><span class="line">bd  csos  csos.zip</span><br><span class="line">root@ubuntu:/home/jiangyd/windows# touch a.txt</span><br><span class="line">root@ubuntu:/home/jiangyd/windows# ls</span><br><span class="line">a.txt  bd  csos  csos.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消挂载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@ubuntu:/home/jiangyd# umount ./windows/</span><br><span class="line">root@ubuntu:/home/jiangyd# cd windows/</span><br><span class="line">root@ubuntu:/home/jiangyd/windows# ls</span><br><span class="line">root@ubuntu:/home/jiangyd/windows#</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/通过判断浏览器信息给用户显示不同页面或不同功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -489,15 +640,19 @@
       
         
           
-            <p>有一次开发调试问题时，发现某个A接口请求没有响应，而它下一个B接口请求又依赖这个A接口的返回内容<br>，于是它认为是这个A接口有问题，把责任都往这个接口上推,因为这是它在chrome控制台看到的现象</p>
+            <blockquote>
+</blockquote>
+<p>有一次开发调试问题时，发现某个A接口请求没有响应，而它下一个B接口请求又依赖这个A接口的返回内容<br>，于是它认为是这个A接口有问题，把责任都往这个接口上推,因为这是它在chrome控制台看到的现象</p>
+<img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/chrome_resp.jpg" title="显示Failed to load response data">
 <img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/size.png" title="该请求返回数据内容大小">
 <img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/get.png" title="该接口请求及响应详细内容">
 <img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/timing.png" title="这响应时间说明并不是因为超时而出现的问题">
 <img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/postman.png" title="使用postman，该接口是有响应内容的">
-<blockquote>
-<p>目前我猜测可能是跨域了，而没有显示内容</p>
-</blockquote>
-
+<h4 id="让人觉得很奇怪，所以我换了个浏览器，使用firefox试试"><a href="#让人觉得很奇怪，所以我换了个浏览器，使用firefox试试" class="headerlink" title="让人觉得很奇怪，所以我换了个浏览器，使用firefox试试"></a>让人觉得很奇怪，所以我换了个浏览器，使用firefox试试</h4><img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/firefox.png" title="感觉firefox表现的更差，啥也没有">
+<h4 id="为此我纪录了浏览器的版本信息"><a href="#为此我纪录了浏览器的版本信息" class="headerlink" title="为此我纪录了浏览器的版本信息"></a>为此我纪录了浏览器的版本信息</h4><img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/chrome_useragent.png" title="chrome浏览器User-Agent">
+<img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/firefox_useragent.png" title="firefox浏览器User-Agent">
+<h4 id="但是我在家里的电脑访问，又可以显示内容了，firefox浏览器-，什么原因还不清楚"><a href="#但是我在家里的电脑访问，又可以显示内容了，firefox浏览器-，什么原因还不清楚" class="headerlink" title="但是我在家里的电脑访问，又可以显示内容了，firefox浏览器   ，什么原因还不清楚"></a>但是我在家里的电脑访问，又可以显示内容了，firefox浏览器   ，什么原因还不清楚</h4><img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/firefox_windows.jpg" title="firefox浏览器显示了响应内容">
+<img src="/2018/09/26/chrome-控制台某请求没有显示响应内容/firefox_windows_useragent.jpg" title="firefox浏览器User-Agent">
           
         
       
@@ -1448,138 +1603,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/21/redis默认16个数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江永道">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="睡着了去做梦">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/21/redis默认16个数据库/" itemprop="url">redis默认16个数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-21T16:25:37+08:00">
-                2018-06-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>redis默认16个数据库,通过索引访问,默认为0</p>
-</blockquote>
-<p>默认使用的是0数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-<p>切换数据库1,可以看的到命令行提示多了个[1]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt;</span><br></pre></td></tr></table></figure>
-<p>切换到数据库15,可以看的到命令行提示多了个[15]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379[1]&gt; select 15</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[15]&gt;</span><br></pre></td></tr></table></figure>
-<p>切换到不存在的数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379[15]&gt; select 16</span><br><span class="line">(error) ERR DB index is out of range</span><br></pre></td></tr></table></figure>
-<p>在数据库1创建的东西，并不会在其它数据库上显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379[15]&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; set name jyd</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; get name</span><br><span class="line">&quot;jyd&quot;</span><br><span class="line">127.0.0.1:6379[1]&gt; select 15</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[15]&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379[15]&gt;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1634,7 +1657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1656,7 +1679,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
